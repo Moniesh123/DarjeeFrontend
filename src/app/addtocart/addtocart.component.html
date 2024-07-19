@@ -1,0 +1,79 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+    <div class="container-fluid heading">
+        <h1>Your Cart [ 5 Items]</h1>
+    </div>
+    <table class="container table">
+        <thead>
+            <tr>
+                <th scope="col" colspan="2" class="text-center">Item</th>
+                <th scope="col" class="text-center">Price</th>
+                <th scope="col" class="text-center">Quantity</th>
+                <th scope="col" class="text-center">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row" colspan="2" class="fixing">
+                    <img src="../../assets/design images/d-02.jpg" alt="">
+                    <div class="description">
+                        <p class="changingFont" style="text-align: center;">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </td>
+                <td class="price changingFont ">
+                    <p>&#8377; 5000</p>
+                </td>
+                <td class="Quantity changingFont ">
+                    <div class="quantitybutton">
+                        <form #GetQuantity="ngForm" (submit)="addingquantity(GetQuantity.value)">
+                            <button class="right-btn">-</button>
+                            <input type="number"
+                                style="width: 35.5px;padding-left: 9px;padding-right:5px;padding-top: 3.5px;padding-bottom: 1.5px;font-size: 15px;"
+                                name="Productquantity" #Productquantity ngModel>
+                            <button class="left-btn">+</button>
+                        </form>
+                    </div>
+                </td>
+                <td class="total changingFont ">
+                    <p>5000</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container sidecalculation">
+    <table class="table">
+        <tr class="changingFont">
+            <td>SubTotal</td>
+            <td style="text-align: right;">&#8377; 5000.00</td>
+        </tr>
+        <tbody>
+            <tr class="changingFont">
+                <td>Sale Tax</td>
+                <td style="text-align: right;">&#8377; 1500.00</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td style="font-size: 22px; font-weight: 600; ">Grand Total</td>
+            <td style="text-align: right;font-size: 28px; font-weight: 600;">&#8377; 15000.00</td>
+        </tr>
+    </table>
+</div>
+
+<div class="container sidecalculation02">
+    <div class="card" style="width: 24rem;margin: 20px 0px; ">
+        <div class="flexing">
+            <div>
+                <h5 style="width: 280px;">Congrats You Are Eligible For Shipping</h5>
+            </div>
+            <img width="60px" height="65px" src="../../assets/truck.png" alt="">
+        </div>
+        <div class="card-body text-center">
+            <a class="btn btn-success" routerLink="/CheckOutProduct">Check Out</a>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,97 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-fluid mastercontainer">
+    <div class="container0fluid imgcontainer">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis cum tenetur explicabo maxime quas corrupti
+        sapiente accusantium perspiciatis repellendus corporis.
+    </div>
+</div>
+
+<div class="container divsmaincontainer">
+
+    <form #AppointmentDataGet="ngForm" (submit)="Appointmentsubmit(AppointmentDataGet.value)">
+        <div class="container maincontainer">
+            <h2>Book an Appointment >>> </h2>
+            <div class="formscontainer">
+
+                <div class="formgroup01">
+                    <div class="form-floating" style="width: 400px;">
+                        <input type="text" class="form-control" id="FirstName" name="FirstName" required
+                            placeholder="Jhon" name="FirstName" #FirstName="ngModel" ngModel>
+                        <label for="firstName">First Name</label>
+                    </div>
+
+                    <div class="form-floating" style="width: 400px;">
+                        <input type="text" class="form-control" id="LastName" name="LastName" required placeholder="Deo"
+                            name="LastName" #LastName="ngModel" ngModel>
+                        <label for="LastName">Last Name</label>
+                    </div>
+
+                    <div class="form-floating" style="width: 400px;">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                            name="Emailid" required name="Emailid" #Emailid="ngModel" ngModel>
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                </div>
+
+                <div class="formgroup01">
+                    <div class="form-floating" style="width: 400px;">
+                        <input type="number" class="form-control" id="PhoneNumber" placeholder="+91 00000 00000"
+                            name="PhoneNumber" required name="PhoneNo" inputmode="numeric" #PhoneNo="ngModel" ngModel>
+                        <label for="PhoneNumber">Phone Number</label>
+                    </div>
+
+                    <div class="form-floating" style="width: 400px;">
+                        <input type="date" class="form-control" id="PreferredDate" name="PreferredDate" required
+                            name="AppointmentDate" #AppointmentDate="ngModel" ngModel>
+                        <label for="PhoneNumber">Preferred Date</label>
+                    </div>
+
+                    <div class="form-floating" style="width: 400px;">
+                        <input type="time" class="form-control" id="AppointmentTime" name="AppointmentTime" required
+                            name="AppointmentTime" #AppointmentTime="ngModel" ngModel>
+                        <label for="AppointmentTime">Preferred Time</label>
+                    </div>
+
+                </div>
+
+                <div class="formgroup01">
+
+                    <div class="form-floating" style="width: 400px;">
+                        <select class="form-select" id="ServiceType" name="ServiceType" required
+                            name="AppointmentService" #AppointmentService="ngModel" ngModel>
+                            <option value="fitting">Fitting</option>
+                            <option value="alteration">Alteration</option>
+                            <option value="customDesign">Sweing Dress</option>
+                        </select>
+                        <label for="ServiceType">Service Type</label>
+                    </div>
+
+                    <div class="form-floating" style="width: 850px;">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                            name="CommentRequest" #CommentRequest="ngModel" ngModel></textarea>
+                        <label for="floatingTextarea">Special Requests</label>
+                    </div>
+                </div>
+
+                <div class="formgroup01">
+
+                    <div class="form-floating" style="width: 400px;">
+                        <select class="form-select" id="ServiceType" name="ServiceType" required
+                            name="AppointmentService" #AppointmentService="ngModel" ngModel>
+                            <option value="fitting">Made To measures</option>
+                            <option value="alteration">perfectioniest</option>
+                            <option value="customDesign">Make Your Fashoin</option>
+                        </select>
+                        <label for="ServiceType">Select Tailor</label>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input class="btn btn-outline-success" type="submit" value="Submit">
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

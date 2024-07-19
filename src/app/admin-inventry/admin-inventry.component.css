@@ -1,0 +1,12 @@
+.option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.modalflexingitem{
+    position: relative;
+    top: 700px;
+    right: -550px;
+}

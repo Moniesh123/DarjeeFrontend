@@ -1,0 +1,479 @@
+<app-nav-bar></app-nav-bar>
+
+<!-- progress bar -->
+<div class="container progressbar">
+    <div style="display: flex;flex-direction: column;justify-content: center;">
+        <button id="ButtonProgress1" (click)="ProgressSteper1()">1</button>
+        <label for="ButtonProgress1">Step 1</label>
+    </div>
+
+    <div style="display: flex;flex-direction: column;justify-content: center;">
+        <div class="line"></div>
+    </div>
+
+    <div style="display: flex;flex-direction: column;justify-content: center;">
+        <button id="ButtonProgress2" (click)="ProgressSteper2()">2</button>
+        <label for="ButtonProgress2">Step 2</label>
+    </div>
+
+    <div style="display: flex;flex-direction: column;justify-content: center;">
+        <div class="line"></div>
+    </div>
+
+    <div style="display: flex;flex-direction: column;justify-content: center;">
+        <button id="ButtonProgress3" (click)="ProgressSteper3()">3</button>
+        <label for="ButtonProgress3">Step 3</label>
+    </div>
+</div>
+
+<!-- Adress Displaying -->
+<div class="container" *ngIf="AdressConfirm01">
+    <div class="container">
+
+        <h1>Add Your Address</h1>
+
+        <div class="row">
+
+            <div class="col-md-4 col-lg-4 col-sm-4">
+                <label style="width: 24rem;">
+                    <input type="radio" name="product" class="card-input-element" />
+
+                    <div class="card card-default card-input">
+                        <div class="card-header">Product A</div>
+                        <div class="card-body">
+                            Product specific content
+                        </div>
+                        <hr>
+                        <div class="buttons" id="Buttonmain">
+                            <button class="btn btn-warning" (click)="GotoPaymentOption()">Deliver To This
+                                Address</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Edit Address
+                            </button>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4" style="margin-top: 5px;">
+                <label style="width: 24rem;">
+                    <div class="card card-default card-input">
+                        <button routerLink="/UsersAddress"
+                            style="background-color: transparent; display: flex;justify-content: center;padding-top: 100px;padding-bottom: 100px;font-size: 26px;">
+                            <span style="font-size: 50px;margin-top: -5px;" class="material-symbols-outlined">add</span>
+                            Add Your Address
+                        </button>
+                    </div>
+                </label>
+            </div>
+
+
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="d-flex  m-auto" style="float: right;">
+                <button class="btn btn-info" style="padding-left: 100px;padding-right: 100px;font-size: 20px;"
+                    (click)="AddressNextBtn()">Next</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- cash on delivery and amazon pay -->
+<div class="container-fluid" *ngIf="PaymentConfirm02">
+    <form #Payment="ngForm" (ngSubmit)="PaymentDetails(Payment.value)">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="container"
+                style="flex-direction: column;display: flex;justify-content: center;margin: auto;align-items: center;">
+                <h1 style="margin: 5px 0px;">Payment</h1>
+                <label style="padding: 12px 15px; font-size: 18px;margin-left: -320px;font-weight: 500;">RECOMMONDED
+                </label>
+
+                <div style="width: 30rem; box-shadow: 0px 1px 5px black;border-radius: 0px;padding: 10px 20px;">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div>
+                                <input style="width: 100%; height: 100px;display: none;" id="Upipaymentsid1"
+                                    type="checkbox" (change)="updateButtonState()" required name="CashOnDelivery"
+                                    #CashOnDelivery="ngModel" [(ngModel)]="checkbox1" ngModel>
+
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOneuper01" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <label for="Upipaymentsid1">
+                                        <h5>Cash On Delivery</h5>
+                                    </label>
+                                </button>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseOneuper01" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <form>
+                                    <div class="container">
+                                        <div class="form-floating"
+                                            style="width: 22rem; height: auto;font-size: 18px;margin-top: 15px;margin-bottom: 15px;">
+
+                                            <h5>Use The Cash On Delivery</h5>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- more ways of payments -->
+            <div class="container"
+                style="flex-direction: column;display: flex;justify-content: center;margin: auto;align-items: center; margin-top: 30px;height: auto;">
+                <label style="padding: 12px 15px; font-size: 18px;margin-left: -300px;font-weight: 500;">MORE WAYS TO
+                    PAY
+                </label>
+                <div style="width: 30rem; box-shadow: 0px 1px 5px black;border-radius: 0px;padding: 10px 20px;">
+                    <!-- debit card -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div>
+                                <input style="width: 100%; height: 100px;display: none;" id="Upipaymentsid2"
+                                    type="checkbox" required name="DebitOrCredit" [(ngModel)]="checkbox2"
+                                    (change)="updateButtonState()" DebitOrCredit="ngModel" ngModel>
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne1" aria-expanded="false"
+                                    aria-controls="flush-collapseOne1">
+                                    <label for="Upipaymentsid2">
+                                        <h5>Credit Or Debit Card</h5>
+                                    </label>
+                                </button>
+                            </div>
+                        </h2>
+                        <!-- debit card details -->
+                        <div id="flush-collapseOne1" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="form-floating"
+                                        style="width: 22rem; height: auto;font-size: 18px;margin-top: 15px;margin-bottom: 15px;">
+                                        <!-- <label for="">Credit Or Debit Card Number</label> -->
+                                        <input type="number" class="form-control" id="Amazonupi"
+                                            placeholder="0000 0000 0000" #DebitOrCreditNumber="ngModel"
+                                            name="DebitOrCreditNumber" ngModel>
+                                        <label for="Amazonupi">Credit or Debit Card Number</label>
+                                    </div>
+                                    <div class="d-flex justify-content-around m-auto"
+                                        style="margin-bottom: 15px;margin-top: 10px;">
+
+                                        <div class="form-floating" style="width: 6rem; height: auto;">
+                                            <input type="number" style="padding-left: 20px;" class="form-control"
+                                                id="Amazonupi" placeholder="00 | 00" #DebitOrCreditExpiry="ngModel"
+                                                name="DebitOrCreditExpiry" ngModel>
+                                            <label for="Amazonupi">Expiry</label>
+                                        </div>
+                                        <div class="form-floating" style="width: 4rem; height: auto;font-size: 18px;">
+                                            <input type="number" class="form-control" id="Amazonupi" placeholder="000"
+                                                #DebitOrCreditcvv="ngModel" name="DebitOrCreditcvv" ngModel>
+                                            <label for="Amazonupi">CVV</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <!-- Emi Option -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div>
+                                <input style="width: 100%; height: 100px;display: none;" id="Upipaymentsid3"
+                                    type="checkbox" (change)="updateButtonState()" required name="UpiPayment"
+                                    [(ngModel)]="checkbox3" UpiPayment="ngModel" ngModel>
+                                <button disabled type="button" class="accordion-button collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne2" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <label for="Upipaymentsid3">
+                                        <h5>EMI</h5>&nbsp;&nbsp;<h6 style="color: red;">Not Available</h6>
+                                    </label>
+                                </button>
+                            </div>
+                        </h2>
+                        <!-- details about emi -->
+                        <div id="flush-collapseOne2" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="form-floating" style="width: 24rem;">
+                                        <!-- <input type="text" class="form-control" name="" id="Amazonupi"> -->
+                                        <h4 style="margin: 15px 0px;color: red;" for="Amazonupi">Currently Not
+                                            Available</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <!-- net banking -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div>
+                                <input style="width: 100%; height: 100px;display: none;" id="Upipaymentsid4"
+                                    type="checkbox" (change)="updateButtonState()" required name="UpiPayment"
+                                    [(ngModel)]="checkbox4" UpiPayment="ngModel" ngModel>
+                                <button type="button" disabled class="accordion-button collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne3" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <label for="Upipaymentsid4">
+                                        <h5>NetBanking</h5>&nbsp;&nbsp;<h6 style="color: red;">Not Available</h6>
+                                    </label>
+                                </button>
+                            </div>
+                        </h2>
+                        <!-- details about net banking -->
+                        <div id="flush-collapseOne3" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="form-floating" style="width: 24rem;">
+                                        <h4 style="margin: 12px 0px;color: red;">Currently Not Connected</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <!-- Upi -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div>
+                                <input style="width: 100%; height: 100px;display: none;" id="Upipaymentsid5"
+                                    type="checkbox" (change)="updateButtonState()" required [(ngModel)]="checkbox5"
+                                    name="UpiPayment" UpiPayment="ngModel" ngModel>
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne4" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <label for="Upipaymentsid5">
+                                        <h5>UPI</h5>
+                                        <h6>Google Pay, Phone Pay, Paytm & More</h6>
+                                    </label>
+                                </button>
+                            </div>
+                        </h2>
+                        <!-- details about upi -->
+                        <div id="flush-collapseOne4" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="form-floating" style="width: 24rem;">
+                                        <input type="text" class="form-control" id="Amazonupi" placeholder="UPI ID"
+                                            name="UpiId" #UpiId="ngModel" ngModel>
+                                        <label for="Amazonupi">Upi Id</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+                    <div class="buttonfrombtn">
+                        <button [disabled]="!atLeastOneChecked" (click)="shiftingtodetailpage()"
+                            class="btn btn-warning fs-5 mb-4" style="width: 27rem;">Continue</button>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 50px; margin-bottom: 100px;">
+                <div class="d-flex justify-content-around m-auto">
+                    <input type="button" (click)="PaymentOptionprev()" class="btn btn-danger"
+                        style="margin-bottom: 50px; padding-left: 50px; padding-right: 50px; font-size: 20px; "
+                        value="Prev">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- Displaying Options of Checkout And Summary -->
+
+<div class="container" style="margin-top: 50px;" *ngIf="DetailConfirm03">
+    <h2 class="text-center" style="font-weight: 600;letter-spacing: 2px; margin-top: 50px;margin-bottom: 50px;">
+        Order Confirm</h2>
+    <div class="container"
+        style="width: 70%; height: 50%;float: left;border-right: 1px dashed grey; padding-right: 100px;">
+        <div class="GettingDate">
+            <div class="item1">Wednesday</div>
+            <div class="item2">Free Delivery</div>
+        </div>
+        <hr>
+        <div class="DeliveryGuaranted">
+            <div>Guaranted Delivery : 31 january 2024</div>
+        </div>
+        <hr>
+
+        <div class="MainBox1">
+            <div class="flexingProduct">
+                <img src="../../assets/home-img-01.jpg" alt="">
+                <div class="aboutproductdetails">
+                    <div class="titleheading">
+                        Giza Falcon
+                    </div>
+                    <div class="aboutOrder">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo sunt quos repellendus dolorem
+                        modi repellat non
+                    </div>
+                    <div style="font-size: 22px;font-weight: 500; padding: 12px 0px;">No Of Quantity :- 2</div>
+                    <div class="pricing">Rs : 5000</div>
+                </div>
+            </div>
+
+            <div style="float: left;margin-top: 60px;margin-bottom: 50px;">
+                <button class="btn btn-danger" style="padding-left: 50px;padding-right: 50px;font-size: 18px;"
+                    (click)="ConfirmOrderPrev()">Prev</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" style="width: 28%; height:auto ;float: right;padding-bottom: 50px;">
+
+        <div style="width: auto;height: 80px;"></div>
+
+        <div class="SideBox1">
+            <div class="shippingDetails">
+                <span class="Item1"> Shipping Details :- </span>
+                <span class="Item2">Karthik Nagula</span>
+            </div>
+            <hr>
+            <div class="totalbill">
+                <div class="itemsrow1"> <br>
+                    <span>Items :</span> <br>
+                    <span>Delivery :-</span> <br>
+                    <span>Total :-</span>
+                    <br>
+                    <span class="BiggerText">Order Total :-</span>
+                </div>
+                <div class="itemsrow2"> <br>
+                    <span>15000.00</span> <br>
+                    <span>0.00</span> <br>
+                    <span>15000.00</span> <br>
+                    <span class="BiggerText">15000.00</span>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+
+        <!-- payment Option -->
+        <div class="container" style=" box-shadow: 0px 1px 5px gray; width: auto;">
+            <div style="font-size: 18px;margin-top: 30px; font-weight: 500;letter-spacing: 1.5px;padding: 10px 15px;">
+                Pay On Delivery (Cash / Card)
+            </div>
+        </div>
+
+        <!-- deliver to option -->
+        <div class="deliverto">
+            <hr>
+            <span class="item1">Deliver To :-</span> <br> <br>
+            <span class="item2">Nagula Karthik</span> <br>
+            <div class="item3">Padmanagar Bhiwandi Thane Maharashtra</div>
+            <hr>
+        </div>
+
+        <!-- place order button -->
+        <div class="container">
+            <button class="btn btn-warning placeurorder">Place Your Order</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- updating address -->
+
+<!-- Modal -->
+<form class="row g-3" #AddressForm="ngForm" (ngSubmit)="AdressUpdateForm(AddressForm.value)">
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin-top: 200px;" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Your Address</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <div class="d-flex justify-content-center m-auto">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="PhoneNumber1" placeholder="Phone Number"
+                                    name="PhoneNumber1" #PhoneNumber1="ngModel" ngModel required="">
+                                <label for="PhoneNumber1">Phone Number</label>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="PhoneNumber2"
+                                    placeholder="Phone Number 2 (Optional)" name="PhoneNumber2" #PhoneNumber2="ngModel"
+                                    ngModel>
+                                <label for="PhoneNumber2" class="form-label">Phone Number 2 (Optional) </label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center m-auto">
+
+                            <div class="form-floating mt-3">
+                                <input type="text" class="form-control" id="inputAddress1"
+                                    placeholder="H No / Flat No - 5001 , Main St" name="AddressField1"
+                                    #AddressField1="ngModel" ngModel required>
+                                <label for="inputAddress1" class="form-label">Address</label>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;
+                            <div class="form-floating mt-3">
+                                <input type="text" class="form-control" id="inputAddresson2"
+                                    placeholder="Apartment, studio, or floor" name="AddressField12"
+                                    #AddressField2="ngModel" ngModel required>
+                                <label for="inputAddresson2" class="form-label">Address 2</label>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-center m-auto">
+                            <div class="form-floating mt-3">
+                                <input type="text" id="pincode" #pincode="ngModel" name="pincode" ngModel required
+                                    formcontrolname="pincode" class="form-control ng-untouched ng-pristine ng-invalid">
+                                <label for="pincode" class="form-label">Pin Code</label>
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="form-floating mt-3">
+                                <input type="text" id="inputCity" formcontrolname="city"
+                                    class="form-control ng-untouched ng-pristine ng-invalid" name="City" #City="ngModel"
+                                    ngModel>
+                                <label for="inputCity" class="form-label">City</label>
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="col-md-4 form-floating mt-3">
+                                <input type="text" id="inputState" formcontrolname="state" readonly=""
+                                class="form-control ng-untouched ng-pristine ng-invalid" name="State" #State="ngModel"
+                                ngModel>
+                                <label for="inputState" class="form-label">State</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Update Address</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

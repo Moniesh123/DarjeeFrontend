@@ -1,0 +1,211 @@
+<div class="Login-Component-Bg">
+    <div class="container-xl container-md">
+
+        <!-- login sign up button -->
+        <div class="log-sign-buttons">
+            <button type="submit" (click)="Loginbtn()" class="btn btn-primary fs-5 button-01 ">Login</button>
+            <button type="submit" (click)="signupbtn()" class="btn btn-primary fs-5 button-02 ">Signup</button>
+        </div>
+
+        <!-- Login form -->
+        <div class="login-container" *ngIf="!signup">
+            <div *ngIf="!resetpwd">
+                <h1 class="text-center mb-3">Login</h1>
+
+                <form #Getlogin="ngForm" (ngSubmit)="LoginForm(Getlogin.value)" class="get-form-data">
+                    <div class="mb-3">
+                        <label for="EmailInput" class="form-label fs-5 ">Email address</label>
+                        <input type="email" class="form-control fs-6 " id="EmailInput" #Email="ngModel"
+                            placeholder="name@example.com" name="Email" required ngModel>
+                        <span class="fs-6" *ngIf="Email.touched && Email.invalid"
+                            style="color: white;background-color: red;padding: 3px 5px;margin: 8px 5px;">Please Provide
+                            Email
+                            id</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Password" class="form-label fs-5 ">Password</label>
+                        <input type="password" id="Password" class="form-control fs-6"
+                            aria-describedby="passwordHelpBlock" #Password="ngModel" name="Password" minlength="8"
+                            required ngModel>
+                        <div id="passwordHelpBlock" class="form-text text-white">Your password must be 8-20 characters
+                            long,
+                            contain
+                            letters
+                            and numbers, and must not contain spaces,
+                            special characters, or emoji. <br>
+                            <span class="fs-6 form-text " *ngIf="Password.touched && Password.invalid"
+                                style="color: white;font-weight: 400;background-color: red;padding: 3px 5px;margin: 8px 5px;">Please
+                                Provide
+                                Valid Password</span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid d-md-flex justify-content-md-start ">
+                        Forget<a class="p-1 rounded " role="button" (click)="forgetpwdlink()">Password</a>
+                    </div>
+                    <div class="d-grid col-8 mx-auto">
+                        <button [disabled]="Getlogin.invalid" id="loginbtn01" type="submit"
+                            class="btn btn-outline-success fs-5 mt-3 " variant="success">Login</button>
+                    </div>
+
+                    <div class="container" style="margin: 20px 0px;">
+                        <div style="text-align: center;">
+                            <h6>Login With</h6>
+                        </div>
+                        <div class="loginwith-this">
+                            <div class="ig item">
+                                <img src="../../assets/design images/ig.png" alt="" width="30px" height="30px"
+                                    class="rounded">
+                            </div>
+                            <div class="fb item">
+                                <img src="../../assets/design images/fb.png" alt="" height="30px" class="rounded">
+                            </div>
+                            <div class="google item">
+                                <img src="../../assets/googleimg.png" alt="" width="30px" height="30px" class="rounded">
+                            </div>
+                            <div class="google item">
+                                <img src="../../assets/googleimg.png" alt="" width="30px" height="30px" class="rounded">
+                            </div>
+                        </div>
+                        <!-- <div class="d-grid d-md-flex justify-content-md-center">
+                            <h5 class="heading-4">Or</h5>
+                        </div> -->
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- signup form -->
+        <div class="signup-container" *ngIf="signup">
+            <!-- heading signup -->
+            <h1 class="text-center">Signup</h1>
+
+            <form class="signup-container-form" #signupfrm="ngForm" (ngSubmit)="SignupForm(signupfrm.value)">
+                <div class="mb-3">
+                    <label for="GetEmailInput" class="form-label fs-5 ">Email address</label>
+                    <input type="email" class="form-control fs-6 " id="GetEmailInput" placeholder="name@example.com"
+                        #Email="ngModel" name="Email" ngModel>
+                    <span class="fs-6 form-text " *ngIf="Email.touched && Email.invalid" style="color: red;">Please
+                        Provide
+                        Email id</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Fullname" class="form-label fs-5 ">Your First Name</label>
+                    <input type="text" class="form-control fs-6 " id="Firstname" placeholder="Jhon"
+                        #Firstname="ngModel" name="Firstname" ngModel>
+                    <span class="fs-6 form-text " *ngIf="Firstname.touched && Firstname.invalid"
+                        style="color: red;">Please
+                        Provide Your First Name</span>
+                </div>
+                <div class="mb-3">
+                    <label for="Fullname" class="form-label fs-5 ">Your Last Name</label>
+                    <input type="text" class="form-control fs-6 " id="Lastname" placeholder="Boss"
+                        #Lastname="ngModel" name="Lastname" ngModel>
+                    <span class="fs-6 form-text " *ngIf="Lastname.touched && Lastname.invalid"
+                        style="color: red;">Please
+                        Provide Your Full Name</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Phone" class="form-label fs-5">Mobile No</label>
+                    <input type="number" id="Phone" class="form-control fs-6 " placeholder=" +91 123456789 "
+                        #Phone="ngModel" name="Phone" ngModel>
+                    <span class="fs-6 form-text " *ngIf="Phone.touched && Phone.invalid" style="color: red;">Please
+                        Provide
+                        Phone Number</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Password" class="form-label fs-5 ">Password</label>
+                    <input type="password" id="Password" class="form-control fs-6" minlength="8"
+                        aria-describedby="passwordHelpBlock" #password="ngModel" name="Password" ngModel>
+                    <div id="passwordHelpBlock" class="form-text text-white ">Your password must be 8-20 characters
+                        long, contain
+                        letters
+                        and numbers, and must not contain spaces,
+                        special characters, or emoji. <br>
+                        <span class="fs-6 form-text " *ngIf="password.touched && password.invalid"
+                            style="color: red;">Please
+                            Provide Passsword</span>
+                    </div>
+                </div>
+
+                <div class="d-grid col-8 mx-auto">
+                    <button [disabled]="signupfrm.invalid" type="submit" class="btn btn-outline-success fs-5 mt-3 ">Sign
+                        up</button>
+                </div>
+
+                <div class="container" style="margin: 20px 0px;">
+                    <div style="text-align: center;">
+                        <h6>Signup With</h6>
+                    </div>
+                    <div class="loginwith-this-02">
+                        <div class="ig item">
+                            <img src="../../assets/design images/ig.png" alt="" width="30px" height="30px"
+                                class="rounded">
+                        </div>
+                        <div class="fb item">
+                            <img src="../../assets/design images/fb.png" alt="" height="30px" class="rounded">
+                        </div>
+                        <div class="google item">
+                            <img src="../../assets/googleimg.png" alt="" width="30px" height="30px" class="rounded">
+                        </div>
+                        <div class="google item">
+                            <img src="../../assets/googleimg.png" alt="" width="30px" height="30px" class="rounded">
+                        </div>
+                    </div>
+                    <!-- <div class="d-grid d-md-flex justify-content-md-center">
+                        <h5 class="heading-4">Or</h5>
+                    </div> -->
+                </div>
+
+
+
+            </form>
+        </div>
+
+        <!-- forget password -->
+        <!-- <div class="signup-container" *ngIf="resetpwd">
+            <h1 class="text-center mt-4 mb-3">Forget Password</h1>
+            <form class="forget-container-form" #ResetPwd="ngForm" (ngSubmit)="ResetPassword(ResetPwd.value)">
+    
+                <div class="mb-3">
+                    <label for="EmailInput" class="form-label fs-3">Email Id</label>
+                    <input type="text" id="EmailInput" class="form-control fs-5 " #Email="ngModel" name="Email" ngModel>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="Fullname" class="form-label fs-3">Your Name</label>
+                    <input type="text" id="Fullname" class="form-control fs-5" #Fullname="ngModel" name="Fullname" ngModel>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="Phone" class="form-label fs-3 ">Mobile</label>
+                    <input type="text" id="Phone" class="form-control fs-5" #Phone="ngModel" name="Phone" ngModel>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="btn-check-outlined" class="text-center fs-3 ">Get OTP</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">Default checked radio</label>
+                    </div>
+                </div>
+    
+                <div class="d-grid col-4 mx-auto">
+                    <button type="submit" class="btn btn-outline-primary fs-4 mt-3 ">Get OTP</button>
+                </div>
+    
+            </form>
+        </div> -->
+
+
+    </div>
+</div>
